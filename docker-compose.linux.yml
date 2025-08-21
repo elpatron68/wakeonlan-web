@@ -3,9 +3,11 @@ services:
         network_mode: "host"
         environment:
             DATABASE_HOST: "127.0.0.1"
+        ports: []
 
     mariadb:
         network_mode: "host"
+        ports: []
         environment:
             MARIADB_ROOT_HOST: "%"
 
