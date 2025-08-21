@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
     wakeonlan-web:
         image: fluidblue/wakeonlan-web:latest
