@@ -10,11 +10,12 @@ services:
         restart: always
         environment:
             PORT: "9000"
-            DATABASE_HOST: "127.0.0.1"
+            DATABASE_HOST: "mariadb"
             DATABASE_DB: "${DATABASE_DB}"
             DATABASE_USER: "${DATABASE_USER}"
             DATABASE_PASSWORD_FILE: "${DATABASE_PASSWORD_FILE_CONTAINER}"
-        network_mode: "host"
+        ports:
+            - "9000:9000"
         volumes:
             - ${DATABASE_PASSWORD_FILE_LOCAL}:${DATABASE_PASSWORD_FILE_CONTAINER}
         logging:
@@ -31,7 +32,8 @@ services:
             MARIADB_DATABASE: "${DATABASE_DB}"
             MARIADB_USER: "${DATABASE_USER}"
             MARIADB_PASSWORD_FILE: "${DATABASE_PASSWORD_FILE_CONTAINER}"
-        network_mode: "host"
+        ports:
+            - "3306:3306"
         volumes:
             - mariadb-data:/var/lib/mysql
             - ${DATABASE_PASSWORD_FILE_LOCAL}:${DATABASE_PASSWORD_FILE_CONTAINER}
@@ -45,7 +47,8 @@ services:
     adminer:
         image: adminer
         restart: always
-        network_mode: "host"
+        ports:
+            - "8080:8080"
 
 volumes:
     mariadb-data:
