@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM node:16-buster
+# FROM node:16-buster
+FROM node:18-bookworm
+
 WORKDIR /wakeonlan-web
 
 RUN apt-get update && apt-get install -y net-tools arp-scan
